@@ -10,10 +10,9 @@ import com.example.myapplication.R
 import com.example.myapplication.utils.inflate
 import kotlin.collections.ArrayList
 
-class ContactsAdapter() : RecyclerView.Adapter<ContactsAdapter.ContactHolder>() {
+class ContactsAdapter(contactList : List<Contact> = ArrayList<Contact>()) : RecyclerView.Adapter<ContactsAdapter.ContactHolder>() {
 
-    private var contacts = ArrayList<Contact>()
-
+    private var contacts = contactList
     class ContactHolder(view: View) : RecyclerView.ViewHolder(view) {
         var titleView: TextView? = view.findViewById(R.id.name)
         var phoneView: TextView? = view.findViewById(R.id.phone_number)
@@ -39,8 +38,4 @@ class ContactsAdapter() : RecyclerView.Adapter<ContactsAdapter.ContactHolder>() 
 
     override fun getItemCount() = contacts.size
 
-    fun updateList(contactList: List<Contact>) {
-        contacts = ArrayList(contactList)
-        notifyDataSetChanged()
-    }
 }

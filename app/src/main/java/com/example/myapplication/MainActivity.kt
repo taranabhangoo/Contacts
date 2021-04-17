@@ -1,17 +1,13 @@
 package com.example.myapplication
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.adapters.ContactsAdapter
-import com.example.myapplication.models.ContactViewModel
-import com.example.myapplication.models.ContactViewModelFactory
 import com.example.myapplication.models.DataModels
 import com.example.myapplication.utils.ParserUtil
-import kotlinx.android.synthetic.main.activity_main.*
 import java.io.IOException
 import java.io.InputStream
 
@@ -19,10 +15,6 @@ import java.io.InputStream
 class MainActivity : AppCompatActivity() {
 
     private lateinit var adapter: ContactsAdapter
-
-    private val contactViewModel: ContactViewModel by viewModels {
-        ContactViewModelFactory((application as ContactsApplication).repository)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,15 +28,35 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpRecyclerView() {
 
+        val json = loadJSONFromAsset()
+        var contacts = ArrayList<DataModels.Contact>()
+        json?.let {
+            contacts = ParserUtil.parseContacts(it)
+        }
+
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
-        adapter = ContactsAdapter()
+        adapter = ContactsAdapter(contacts)
         recyclerView.adapter = adapter
 
-        contactViewModel.allContacts.observe(this) { words ->
-            // Update the cached copy of the words in the adapter.
-            words.let { adapter.updateList(it) }
+
+    }
+
+    private fun loadJSONFromAsset(): String? {
+        val json : String
+        try {
+            val stream: InputStream = assets.open("assets.json")
+            val size: Int = stream.available()
+            // Read the entire asset into a local byte buffer.
+            val buffer = ByteArray(size)
+            stream.read(buffer)
+            stream.close()
+            json = String(buffer)
+        } catch (e: IOException) {
+            e.printStackTrace()
+            return null
         }
+        return json
     }
 }

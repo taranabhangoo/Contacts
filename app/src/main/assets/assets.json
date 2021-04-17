@@ -1,0 +1,106 @@
+[
+	{
+		"name": {
+			"first": "Etienne",
+			"last": "Goulet-Lang"
+		},
+		"phone": [
+			{
+				"label": "mobile",
+				"value": "+14151231234"
+			},
+			{
+				"label": "work",
+				"value": "+16501231234"
+			}
+		],
+		"email": [
+			{
+				"label": "personal",
+				"value": "etienne@goulet-lang.com"
+			},
+			{
+				"label": "work",
+				"value": "etienne@sunshine.com"
+			}
+		]
+	},
+	{
+		"name": {
+			"first": "Enrique",
+			"last": "Munoz-Torres"
+		},
+		"phone": [
+			{
+				"label": "mobile",
+				"value": "+14151234321"
+			},
+			{
+				"label": "work",
+				"value": "+16501234321"
+			}
+		],
+		"email": [
+			{
+				"label": "personal",
+				"value": "enrique@munoz.com"
+			},
+			{
+				"label": "work",
+				"value": "enrique@sunshine.com"
+			}
+		]
+	},
+	{
+		"name": {
+			"first": "Marissa",
+			"last": "Mayer"
+		},
+		"phone": [
+			{
+				"label": "mobile",
+				"value": "+14159994321"
+			},
+			{
+				"label": "work",
+				"value": "+16509994321"
+			}
+		],
+		"email": [
+			{
+				"label": "personal",
+				"value": "marissa@mm.com"
+			},
+			{
+				"label": "work",
+				"value": "marissa@sunshine.com"
+			}
+		]
+	},
+	{
+		"name": {
+			"first": "John",
+			"last": "Martin"
+		},
+		"phone": [
+			{
+				"label": "mobile",
+				"value": "+14159999999"
+			},
+			{
+				"label": "work",
+				"value": "+16509999999"
+			}
+		],
+		"email": [
+			{
+				"label": "personal",
+				"value": "john@martin.com"
+			},
+			{
+				"label": "work",
+				"value": "john@sunshine.com"
+			}
+		]
+	}
+]
